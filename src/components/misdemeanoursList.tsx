@@ -16,7 +16,8 @@ const MisdemeanoursList=() => {
     },[]);
  
     const [misdemeanours , setMisdemeanours] = useState<Array<FakelandianMisdemeanours>>([]);
-    const[misdemeanoursSelect,setMisdemeanoursSelect] = useState<Array<Misdemeanour>>([]);
+    const[misdemeanoursSelect,setMisdemeanoursSelect] = useState<Misdemeanour>();
+    
     function handleOptions(e: any){
       setMisdemeanoursSelect(e.target.value);
     }
@@ -25,11 +26,12 @@ const MisdemeanoursList=() => {
       <MisdemeanoursContext.Provider value ={misdemeanours}>
         <section className="misdemeanoursFilter">
           <select  id="options" className="options" placeholder="Filter"
-           name="options" onSelect={handleOptions}> 
-            <option value="rudeness">Mild Public Rudeness</option>
-            <option value="speaking">Speaking in a Lift </option>
-            <option value="eating">Not Eating Your Vegetables</option>
--           <option value="supporting">Supporting Manchester United</option>
+           name="options" onChange={handleOptions}> 
+            <option value="all">All Misdemeanours</option>
+             <option value="rudeness 🤪">rudeness 🤪</option>
+            <option value="lift 🗣">lift 🗣 </option>
+            <option value="vegetables 🥗">vegetables 🥗</option>
+-           <option value="united 😈">united 😈</option>
           </select>
         </section>
       <section className ="misdemeanoursTable">
@@ -39,12 +41,17 @@ const MisdemeanoursList=() => {
             <span className="misdemeanourstype">Misdemeanours</span>
             <span className="misdemeanoursImg">Punishment</span>
         </div>
+        {misdemeanoursSelect && misdemeanours.filter(m =>m.misdemeanour === misdemeanoursSelect)
+          .map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
+            misdemeanour ={item.misdemeanour}/>
+           })}
 
-      {misdemeanours.map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
+        {!misdemeanoursSelect &&
+      misdemeanours.map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
            misdemeanour ={item.misdemeanour}/>
-          })}
-        
-        </section>
+          })
+          }
+     </section>
         </MisdemeanoursContext.Provider>
 
     )
