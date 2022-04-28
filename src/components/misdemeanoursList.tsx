@@ -40,16 +40,9 @@ const MisdemeanoursList=() => {
             <span className="misdemeanoursImg">Punishment</span>
         </div>
 
-        {!misdemeanoursSelect &&
-        {misdemeanours.map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
+      {misdemeanours.map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
            misdemeanour ={item.misdemeanour}/>
           })}
-          }
-          {misdemeanoursSelect && {misdemeanours.filter(m =>{m.misdemeanour === misdemeanoursSelect})
-          .map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
-            misdemeanour ={item.misdemeanour}/>
-           })}}
-
         
         </section>
         </MisdemeanoursContext.Provider>

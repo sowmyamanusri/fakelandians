@@ -17,7 +17,7 @@ return(
     <span className ="misdemeanoursId">{citizenId}</span>
     <span className ="misdemeanoursdate">{date}</span>
     <span className ="misdemeanourstype">{misdemeanour}</span>
-    <span className ="misdemeanoursimg"><img alt={"punishment for " +misdemeanour} src={'https://picsum.photos/id/140/70/'} /></span>
+    <span className ="misdemeanoursimg"><img alt={"punishment for " +misdemeanour} src={'https://picsum.photos/id/30/30/'} /></span>
    </div>
 );
 }
