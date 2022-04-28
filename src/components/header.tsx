@@ -4,10 +4,17 @@ const Header =() =>
 <>
 <nav className="header__nav">
        <ul className ="nav__menu">
-       <li><h1 className="nav__title" > Fakelandia  Justice Department</h1></li>
-      <li><NavLink to ='/' className="nav__item">Home</NavLink></li>
-      <li><NavLink to ='/misdemeanours' className="nav__item">Misdemeanours</NavLink></li>
-      <li><NavLink to= '/confess' className="nav__item">Confess to Us</NavLink></li>
+       <li><p className="nav__title" > Fakelandia  Justice Department</p></li>
+      <li><NavLink to ='/'  style={({ isActive }) => ({
+        color: isActive ? '#32a8a6' : '#E7ECEF'
+      })}>Home</NavLink></li>
+      <li><NavLink to ='/misdemeanoursList' 
+      style={({ isActive }) => ({
+        color: isActive ? '#32a8a6' : '#E7ECEF'
+      })}>Misdemeanours</NavLink></li>
+      <li><NavLink to= '/confess'  style={({ isActive }) => ({
+        color: isActive ? '#32a8a6' : '#E7ECEF'
+      })}>Confess to Us</NavLink></li>
      </ul>
  </nav>
 </>
