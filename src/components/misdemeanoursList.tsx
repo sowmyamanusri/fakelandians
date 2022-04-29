@@ -27,11 +27,11 @@ const MisdemeanoursList=() => {
         <section className="misdemeanoursFilter">
           <select  id="options" className="options" placeholder="Filter"
            name="options" onChange={handleOptions}> 
-            <option value="all">All Misdemeanours</option>
-             <option value="rudeness 🤪">rudeness 🤪</option>
-            <option value="lift 🗣">lift 🗣 </option>
-            <option value="vegetables 🥗">vegetables 🥗</option>
--           <option value="united 😈">united 😈</option>
+            <option value="">All Misdemeanours</option>
+             <option value="Mild Public Rudeness = 🤪">Mild Public Rudeness = 🤪</option>
+            <option value="Speaking in a Lift = 🗣">Speaking in a Lift = 🗣 </option>
+            <option value="Not Eating Your Vegetables = 🥗">Not Eating Your Vegetables = 🥗</option>
+-           <option value="Supporting Manchester United = 😈">Supporting Manchester United = 😈</option>
           </select>
         </section>
       <section className ="misdemeanoursTable">

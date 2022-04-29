@@ -166,3 +166,60 @@ font-size: 1.2rem;
   font-size: 1rem;
   padding:0.5rem;
 }
+
+/* confess */
+
+.confess__text{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.confess__text p{
+  font-weight: 700;
+}
+.confess__form__fieldset{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+ 
+}
+
+.confess__form label{
+ 
+  font-size:1rem;
+  font-weight:bold;
+  padding: 0.5rem;
+  line-height:0.5rem;
+
+}
+
+.confess__form input{
+  padding:0.3rem;
+  
+}
+
+.confess__form .textarea{
+  padding: 0.5rem;
+  line-height:1rem;
+  margin:0.5rem;
+  width :300px;
+  height:100px;
+
+}
+.confess__form .btn{
+  padding: 0.2rem 0.5rem;
+  background-color: #32a8a6;
+  border-radius:5px;
+}
+
+.confess__form__submit{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}

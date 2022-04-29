@@ -1,9 +1,9 @@
 import { FakelandianMisdemeanours } from "./fakelandianMisdemeanours";
 export const MISDEMEANOURS = [
-	'rudeness 🤪',
-	'vegetables 🥗',
-	'lift 🗣',
-	'united 😈',
+	'Mild Public Rudeness = 🤪',
+	'Speaking in a Lift = 🗣',
+	'Not Eating Your Vegetables = 🥗',
+	'Supporting Manchester United = 😈',
 ] as const;
 export type Misdemeanour = typeof MISDEMEANOURS[number];
 
