@@ -7,7 +7,7 @@ const Confess : React.FC =() =>{
      return {
        subject: '',
        reason: '',
-       details:''
+       details:'',
      }
    }
     return {
@@ -18,25 +18,20 @@ const Confess : React.FC =() =>{
   const handleSubmit = (event:any) => {
    event.preventDefault();
    setSubmitting(true);
-   
-if (formData.reason === 'I just want to talk'){
+   if (formData.reason === 'I just want to talk'){
   console.log(formData.reason);
 }
-
-   setTimeout(()=>{
-   
-       setSubmitting(false);
-       setFormData({reset:true});
-     
-     
-   },3000)
+ setTimeout(()=>{
+  setSubmitting(false);
+   setFormData({reset:true});
+     },3000)
   }
   
   const handleChange =(event:any)=>{
       setFormData({name:event.target.name,value:event.target.value});
   }
   const [submitting, setSubmitting] = useState(false);
-  const [formData, setFormData] = useReducer(formReducer, {});
+  const [formData, setFormData] = useReducer(formReducer, {count :50,});
   
   
 return(
@@ -47,9 +42,6 @@ return(
 <p>However if you're just having a hard day and need to vent then you're are welcome to contact us here too.up to you!</p>
 </div>
 <div className ="confess__form__submit">
-
-
-
 {submitting && formData.reason !== 'I just want to talk' &&
    <div>
         You are submitting the following:
@@ -67,11 +59,14 @@ return(
 <form className ="confess__form" onSubmit ={handleSubmit}>
         <fieldset  className="confess__form__fieldset"disabled ={submitting}>
         <h2>Confess Form</h2>
+        <div className ="confess confess__input">
          <label> Subject :
-            <input name="subject" onChange={handleChange} value ={formData.subject}/>
+            <input name="subject" onChange={handleChange} value ={formData.subject} required/>
           </label>
+          </div>
+          <div className ="confess confess__select">
          <label> Reason for contact :
-           <select  className ="reason" name="reason" onChange={handleChange}>
+           <select  className ="reason" name="reason" onChange={handleChange} required>
                <option value="">Reason for confess</option>
                <option value="Mild Public Rudeness = 🤪">Mild Public Rudeness = 🤪</option>
                <option value="Speaking in a Lift = 🗣">Speaking in a Lift = 🗣</option>
@@ -80,7 +75,10 @@ return(
                <option value="I just want to talk">I just want to talk</option>
            </select>
            </label>
-          <textarea  className ="textarea" value= {formData.textarea} onChange={handleChange} />  
+           </div>
+           <div className ="confess confess__textarea">
+          <textarea  className ="textarea" value= {formData.textarea} onChange={handleChange} required />
+          </div>
           <button className ="btn" type="submit" disabled ={submitting}>Submit</button>
          </fieldset>
 </form>

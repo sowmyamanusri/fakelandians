@@ -3,20 +3,28 @@ import generateMisdemeanours ,{Misdemeanour}from '../generate_misdemeanours';
 import MisdemeanoursTable from './misdemeanours';
 import {useState,useEffect} from 'react';
 import {FakelandianMisdemeanours} from '../fakelandianMisdemeanours';
+import LoadingIndicator from './loadIndicator';
+
 
 
 export const MisdemeanoursContext = React.createContext<Array<FakelandianMisdemeanours>>([]);
 const MisdemeanoursList=() => {
+  const [loading,setLoading] = useState(false);
   useEffect(()=>{
         const misdemeanursdata =async() =>{
-            const  fetchedData = await(generateMisdemeanours(5));
-            setMisdemeanours(fetchedData)
+          if(loading)return;
+          setLoading(true);
+         const  fetchedData = await(generateMisdemeanours(5));
+        setMisdemeanours(fetchedData)
+        setLoading(false);
         }
         misdemeanursdata();
-    },[]);
+    },[])
  
     const [misdemeanours , setMisdemeanours] = useState<Array<FakelandianMisdemeanours>>([]);
     const[misdemeanoursSelect,setMisdemeanoursSelect] = useState<Misdemeanour>();
+     const  misdemeanoursCount = misdemeanours.length;
+     console.log(misdemeanoursCount);
     
     function handleOptions(e: any){
       setMisdemeanoursSelect(e.target.value);
@@ -41,12 +49,13 @@ const MisdemeanoursList=() => {
             <span className="misdemeanourstype">Misdemeanours</span>
             <span className="misdemeanoursImg">Punishment</span>
         </div>
+        
         {misdemeanoursSelect && misdemeanours.filter(m =>m.misdemeanour === misdemeanoursSelect)
           .map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
             misdemeanour ={item.misdemeanour}/>
            })}
 
-        {!misdemeanoursSelect &&
+      { !misdemeanoursSelect &&
       misdemeanours.map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
            misdemeanour ={item.misdemeanour}/>
           })

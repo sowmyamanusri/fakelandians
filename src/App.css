@@ -185,6 +185,8 @@ font-size: 1.2rem;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
+  width:50%;
+  margin:0 auto;
  
 }
 
@@ -222,4 +224,22 @@ font-size: 1.2rem;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
+}
+
+.confess{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+  
+  /* Loading indicator */
+.loadSpinner{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  padding-top:8px;
+
 }
