@@ -18,6 +18,7 @@ const Confess : React.FC =() =>{
   const handleSubmit = (event:any) => {
    event.preventDefault();
    setSubmitting(true);
+   setCount(count+1);
    if (formData.reason === 'I just want to talk'){
   console.log(formData.reason);
 }
@@ -31,8 +32,8 @@ const Confess : React.FC =() =>{
       setFormData({name:event.target.name,value:event.target.value});
   }
   const [submitting, setSubmitting] = useState(false);
-  const [formData, setFormData] = useReducer(formReducer, {count :50,});
-  
+  const [formData, setFormData] = useReducer(formReducer, {});
+  const[count,setCount] = useState<number>(0)
   
 return(
 <section >
@@ -80,6 +81,7 @@ return(
           <textarea  className ="textarea" value= {formData.textarea} onChange={handleChange} required />
           </div>
           <button className ="btn" type="submit" disabled ={submitting}>Submit</button>
+          
          </fieldset>
 </form>
 

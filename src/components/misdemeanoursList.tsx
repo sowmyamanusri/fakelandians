@@ -14,12 +14,14 @@ const MisdemeanoursList=() => {
         const misdemeanursdata =async() =>{
           if(loading)return;
           setLoading(true);
-         const  fetchedData = await(generateMisdemeanours(5));
-        setMisdemeanours(fetchedData)
-        setLoading(false);
+         const  fetchedData = await(generateMisdemeanours(10));
+        setMisdemeanours(fetchedData);
+        if(!loading){
+          setLoading(false);  
         }
+      }
         misdemeanursdata();
-    },[])
+    },[loading])
  
     const [misdemeanours , setMisdemeanours] = useState<Array<FakelandianMisdemeanours>>([]);
     const[misdemeanoursSelect,setMisdemeanoursSelect] = useState<Misdemeanour>();
@@ -32,6 +34,7 @@ const MisdemeanoursList=() => {
 
     return(
       <MisdemeanoursContext.Provider value ={misdemeanours}>
+         <h2 className = "home__count">The Total Misdemeanours in the Fakelandia are :{misdemeanoursCount}</h2>
         <section className="misdemeanoursFilter">
           <select  id="options" className="options" placeholder="Filter"
            name="options" onChange={handleOptions}> 
@@ -49,13 +52,13 @@ const MisdemeanoursList=() => {
             <span className="misdemeanourstype">Misdemeanours</span>
             <span className="misdemeanoursImg">Punishment</span>
         </div>
-        
-        {misdemeanoursSelect && misdemeanours.filter(m =>m.misdemeanour === misdemeanoursSelect)
+        {loading && <LoadingIndicator />}
+        {!loading && misdemeanoursSelect && misdemeanours.filter(m =>m.misdemeanour === misdemeanoursSelect)
           .map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
             misdemeanour ={item.misdemeanour}/>
            })}
 
-      { !misdemeanoursSelect &&
+      {!loading && !misdemeanoursSelect &&
       misdemeanours.map(item =>{return <MisdemeanoursTable  citizenId={item.citizenId} date={item.date}
            misdemeanour ={item.misdemeanour}/>
           })

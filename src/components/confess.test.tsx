@@ -1,9 +1,11 @@
 import React from "react";
-import { screen, render } from "@testing-library/react";
+import { screen, render,fireEvent} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Confess from "./confess";
 import pkg from 'jest-watcher';
 import user from '@testing-library/user-event';
+
+
 
 
 describe("Confess Form", () => {
@@ -20,16 +22,23 @@ describe("Confess Form", () => {
       screen.getByRole("button", { name: /submit/i })
     ).toBeInTheDocument();
   });
-  it("onSubmit is called when all the fields pass validation", () => {
-    render(<Confess />)
-      user.type(getSubject(),'confess');
-      const dropdown =screen.getByRole('combobox', { name: /reason for contact :/i });
-      expect(screen.getByRole('option', { name: 'Mild Public Rudeness = 🤪' }).selected).toBe(true);
-      user.selectOptions(dropdown,within(dropdown).getByRole('option',{name:"Not Eating Your Vegetables = 🥗/i"}))
+  it('should display the correct number of options', () => {
+    render(<Confess/>)
+    expect(screen.getAllByRole('option').length).toBe(6)
   })
+ 
+  it('selcted option should display',() =>{
+      render(<Confess/>)
+    const selectOne = screen.getByRole("combobox", { name: /reason for contact :/i });
+    fireEvent.change(selectOne, {
+      target: { value: "Not Eating Your Vegetables = 🥗" }
+    });
+      expect(screen.getByText("Not Eating Your Vegetables = 🥗")).toBeInTheDocument();
+    });
 
-  function getSubject() {
-    return screen.getByRole("textbox", { name: /subject/i });
-  }
 });
+  
 
+ 
+
+ 

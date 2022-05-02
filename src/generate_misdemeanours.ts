@@ -14,6 +14,7 @@ export default async function generateMisdemeanours(
 	await sleep(1500);
 
 	let amount = number ?? 50;
+	localStorage.setItem("countg", amount.toString());
 
 	const misdemeanours = [];
 
