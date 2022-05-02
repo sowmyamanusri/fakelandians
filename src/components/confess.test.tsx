@@ -38,7 +38,3 @@ describe("Confess Form", () => {
 
 });
   
-
- 
-
- 

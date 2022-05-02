@@ -21,7 +21,7 @@ const MisdemeanoursList=() => {
         }
       }
         misdemeanursdata();
-    },[loading])
+    },[])
  
     const [misdemeanours , setMisdemeanours] = useState<Array<FakelandianMisdemeanours>>([]);
     const[misdemeanoursSelect,setMisdemeanoursSelect] = useState<Misdemeanour>();

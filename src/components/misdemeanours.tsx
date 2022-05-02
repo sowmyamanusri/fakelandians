@@ -1,5 +1,5 @@
-import React ,{useContext}from 'react';
-import {MisdemeanoursContext} from './misdemeanoursList'
+import React from 'react';
+ 
 import {Misdemeanour} from '../generate_misdemeanours';
 
 
@@ -11,7 +11,7 @@ interface MisdemeanoursTableProps{
 }
 
 const MisdemeanoursTable:React.FC<MisdemeanoursTableProps> =({citizenId,date,misdemeanour}) => {
-const misdemeanours = useContext(MisdemeanoursContext);
+ 
 return(
  <div className =" misdemeanoursBody">
     <span className ="misdemeanoursId">{citizenId}</span>
